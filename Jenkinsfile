@@ -1,3 +1,8 @@
+import hudson.model.*;
+
+println env.JOB_NAME
+println env.BUILD_NUMBER
+
 pipeline {
     
     stages {
@@ -5,10 +10,7 @@ pipeline {
 	stage('git checkout') { 
             steps{
 				 script{
-				 
-				 checkout([$class: 'GitSCM', branches: [[name: '*/master']],
-							userRemoteConfigs: [[credentialsId: '81e5e57a-73b3-486e-a38a-e0d1a3ffb872', 
-								url: 'https://github.com/join20170910/simple-java-maven-app.git']]])
+				 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '81e5e57a-73b3-486e-a38a-e0d1a3ffb872', url: 'https://github.com/join20170910/simple-java-maven-app.git']]])
 					  }
 		       }
 		 }
